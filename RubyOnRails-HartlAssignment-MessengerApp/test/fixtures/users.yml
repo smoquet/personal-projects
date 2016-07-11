@@ -1,0 +1,32 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# this fixture can be retreived in a test: "user = users(:piet)"
+# users corresponds to the fixture filename users.yml
+# piet corresponds to the key with its values
+piet:
+  name: piet
+  email: p@p.p
+  password_digest: <%=User.digest('password') %>
+  admin: true
+
+jan:
+  name: jan
+  email: j@j.j
+  password_digest: <%=User.digest('password') %>
+
+lana:
+  name: Lana Kane
+  email: hands@example.gov
+  password_digest: <%= User.digest('password') %>
+
+malory:
+  name: Malory Archer
+  email: boss@example.gov
+  password_digest: <%= User.digest('password') %>
+
+<% 30.times do |n| %>
+user_<%=n%>:
+  name: <%= "User #{n}" %>
+  email: <%= "User-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+<%end%>

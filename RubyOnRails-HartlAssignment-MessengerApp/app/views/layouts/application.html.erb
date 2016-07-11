@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- this line yields the title which is provided in the specific html.erb page -->
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag 'application', media: 'all',
+                                           'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |message_type, message|%>
+      <div class='alert alert-<%=message_type%>'><%= message %>
+      </div>
+        <% end %>
+
+<!-- this is where home/help/etc page gets inserted -->
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+       <!-- the if statement dictates that this embedded ruby is only visible in the development environment -->
+      <%= debug(params) if Rails.env.development? %>
+
+
+    </div>
+  </body>
+</html>
+
+
+<!-- This page is a piece of html that is visible on every page, so title with
+yield, a header , footer and shim (for IE 9 and lower). This page is here to avoid
+duplications -->
