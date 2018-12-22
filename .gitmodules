@@ -1,0 +1,3 @@
+[submodule "streamy"]
+	path = streamy
+	url = git@github.com:smoquet/streamy.git
